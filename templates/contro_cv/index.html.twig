@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cv index{% endblock %}
+
+{% block body %}
+    <h1>Cv index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th><br>
+                <th>Prenom</th>
+                <th>Age</th>
+                <th>Adresse</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>NiveauEtude</th>
+                <th>Experience</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cv in cvs %}
+            <tr>
+                <td>{{ cv.id }}</td>s
+                <td>{{ cv.nom }}</td>
+                <td>{{ cv.prenom }}</td>
+                <td>{{ cv.age }}</td>
+                <td>{{ cv.adresse }}</td>
+                <td>{{ cv.email }}</td>
+                <td>{{ cv.telephone }}</td>
+                <td>{{ cv.niveauEtude }}</td>
+                <td>{{ cv.experience }}</td>
+                <td>
+                    <a href="{{ path('contro_cv_show', {'id': cv.id}) }}">show</a>
+                    <a href="{{ path('contro_cv_edit', {'id': cv.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('contro_cv_new') }}">Create new</a>
+{% endblock %}
